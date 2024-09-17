@@ -7,7 +7,7 @@ class Matrix:
         self.cols = len(data[0])
 
     def __add__(self, other):
-        result = [[0 for c in self.cols] for r in self.rows]
+        result = [[0 for c in self.cols] for r in elf.rows]
         # for row in self.rows:
         #     for col in self.cols:
 
