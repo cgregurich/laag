@@ -3,6 +3,13 @@ import matplotlib.pyplot as plt
 class Matrix:
     def __init__(self, data):
         self.data = data
+        self.rows = len(data)
+        self.cols = len(data[0])
+
+    def __add__(self, other):
+        result = [[0 for c in self.cols] for r in self.rows]
+        # for row in self.rows:
+        #     for col in self.cols:
 
 class Point:
     def __init__(self, x, y):
@@ -24,12 +31,12 @@ def configure_plt():
     ax.spines['right'].set_color('none')
     ax.spines['top'].set_color('none')
     ax.set_aspect('equal', adjustable='box')
+    plt.grid(True)
 
 def plot_data(*args):
     """
     args should be a list of lists of Point objects
     """
-    print(args)
     for list_of_points in args:
         x = [p.x for p in list_of_points]
         y = [p.y for p in list_of_points]
@@ -50,6 +57,12 @@ translated_points = [translate(point, dx, dy) for point in points]
 
 plot_data(points, translated_points)
 configure_plt()
+# plt.show()
 
-plt.grid(True)
-plt.show()
+
+translation_matrix = Matrix([
+    [1, 0, 5],
+    [0, 1, 3],
+    [0, 0, 1]
+])
+
